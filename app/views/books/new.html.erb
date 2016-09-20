@@ -1,5 +1,10 @@
+<%= link_to books_path do %>
+<div class="return-button">
+  Return
+</div>
+<%end%>
+
+
 <h1 class="page-title">New Book</h1>
 
 <%= render 'form', book: @book %>
-
-<%= link_to 'Back', books_path %>
