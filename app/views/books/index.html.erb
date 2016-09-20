@@ -1,3 +1,15 @@
+
+<%= form_tag(books_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @posts.present? %>
+  <%= render @posts %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <h1 class="page-title">Books</h1>
@@ -7,19 +19,7 @@
     <% end %>
 
   <body>
-    <% @books.each do |book| %>
-      <!-- <%= link_to "upvote", like_book_path(book), method: :put %> -->
-        <!-- <%= book.title %>
-        <%= book.author %>
-        <%= book.publication %>
-        <%= book.isbn %>
-        <%= book.summary %>
-        <%= book.user %>
-        <%= link_to 'Show', book %>
-        <%= link_to 'Edit', edit_book_path(book) %>
-        <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %> -->
-
-
+    <% @books.reverse_each do |book| %>
 
     <div class="book-user">Posted by: <%= book.user.email %></div>
     <div class="book-container">
@@ -39,7 +39,7 @@
               View
             </div>
             <% end %>
-
+            <% if current_user == book.user %>
               <%= link_to edit_book_path(book) do %>
               <div class="edit-button">
                 Edit
@@ -51,6 +51,7 @@
                 Delete
             </div>
             <% end %>
+            <%end%>
       </div>
 
       <div class="book-seperator"></div>

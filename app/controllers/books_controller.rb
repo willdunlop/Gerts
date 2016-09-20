@@ -22,6 +22,18 @@ class BooksController < ApplicationController
   def edit
   end
 
+
+  def index
+    @books = Book.all
+    if params[:search]
+      @books = Book.search(params[:search]).order("created_at DESC")
+    else
+      @books = Book.all.order('created_at DESC')
+    end
+  end
+
+
+
   def upvote
     @book = Book.find(params[:id])
     @book.upvote_by current_user
