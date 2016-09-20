@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-title">Books</h1>
+
+<%= link_to new_book_path do %>
+    <div class="newbook-button">Add a book!</div>
+    <% end %>
+
+  <body>
+    <% @books.each do |book| %>
+      <!-- <%= link_to "upvote", like_book_path(book), method: :put %> -->
+        <!-- <%= book.title %>
+        <%= book.author %>
+        <%= book.publication %>
+        <%= book.isbn %>
+        <%= book.summary %>
+        <%= book.user %>
+        <%= link_to 'Show', book %>
+        <%= link_to 'Edit', edit_book_path(book) %>
+        <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+
+
+
+    <div class="book-user">Posted by: <%= book.user.email %></div>
+    <div class="book-container">
+
+        <p class="book-title"> <%= book.title %> </p>
+        <p class="book-info"> Author: <%= book.author %>, Publication: <%= book.publication %> </p>
+
+
+        <p class="book-summary">  <%= book.summary %> </p>
+
+        </div>
+
+          <div class="book-action-container">
+            <%= link_to book do %>
+            <div class="edit-button">
+              View
+            </div>
+            <% end %>
+
+              <%= link_to edit_book_path(book) do %>
+              <div class="edit-button">
+                Edit
+            </div>
+            <% end %>
+
+              <%= link_to book, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <div class="edit-button">
+                Delete
+            </div>
+            <% end %>
+      </div>
+
+      <div class="book-seperator"></div>
+
+
+  <% end %>
+
+</body>
+
+<%= link_to new_book_path do %>
+    <div class="newbook-button">Add a book!</div>
+    <% end %>
