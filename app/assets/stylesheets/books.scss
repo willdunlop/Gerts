@@ -1,3 +1,23 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.gertos-logo{
+  width: 64px;
+  height: 64px;
+  background: image-url('book-icon.png');
+  background-size: cover;
+  margin: 0 10px 0 10px;
+  float:left;
+}
+
+.search-button {
+  width: 100px;
+  height: 30px;
+  text-align:center;
+  background-color: #b61f5c;
+  color: #fff;
+  padding-top: 4px;
+  float:right;
+  margin: 0 3px 0 3px;
+  display: block;
+}

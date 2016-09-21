@@ -1,7 +1,9 @@
 
 <%= form_tag(books_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-<%= submit_tag "Search" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Gerto's Mean Ass Library" %>
+<%= link_to submit_tag do %>
+<div class="search-button"> Search </div>
+<%end%>
 <% end %>
 
 <% if @book.present? %>
