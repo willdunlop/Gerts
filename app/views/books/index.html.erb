@@ -4,10 +4,12 @@
 <%= submit_tag "Search" %>
 <% end %>
 
-<% if @posts.present? %>
-  <%= render @posts %>
+<% if @book.present? %>
+  <%= render @book %>
 <% else %>
-  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+  <p>There are no books containing the term(s) <%= params[:search] %>.
+  <!-- <%= @books.inspect %> -->
+</p>
 <% end %>
 
 <p id="notice"><%= notice %></p>
@@ -17,19 +19,24 @@
 <%= link_to new_book_path do %>
     <div class="newbook-button">Add a book!</div>
     <% end %>
+    <div class="book-seperator"></div>
 
   <body>
     <% @books.reverse_each do |book| %>
 
     <div class="book-user">Posted by: <%= book.user.email %></div>
     <div class="book-container">
-
+      <% gbook = GoogleBooks.search(book.title).first %>
         <p class="book-title"> <%= book.title %> </p>
-        <p class="book-info"> Author: <%= book.author %>, </p>
-          <p class="book-info">Publication: <%= book.publication %> </p>
+        <p class="book-info"> Author: <%= gbook.authors %>, </p>
+          <p class="book-info">Publication: <%= gbook.published_date %> </p>
+          <div class="book-cover">
+
+          <img src= <%= gbook.image_link(:zoom => 2) %> >
+          </div>
 
 
-        <p class="book-summary">  <%= book.summary %> </p>
+        <p class="book-summary">  <%= gbook.description %> </p>
 
         </div>
 

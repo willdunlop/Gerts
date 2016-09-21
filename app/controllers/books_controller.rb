@@ -4,9 +4,45 @@ class BooksController < ApplicationController
 
   # GET /books
   # GET /books.json
-  def index
-    @books = Book.all
-  end
+  # def index
+  #   @books = Book.all
+  # end
+
+  def voteone
+     @book = Book.find(params[:id])
+     @book.vote_by :voter => current_user, :vote_weight => 1
+     redirect_to books_path
+   end
+
+   def votetwo
+     @book = Book.find(params[:id])
+     @book.vote_by :voter => current_user, :vote_weight => 2
+     redirect_to books_path
+   end
+
+   def votethree
+     @book = Book.find(params[:id])
+     @book.vote_by :voter => current_user, :vote_weight => 3
+     redirect_to books_path
+   end
+
+   def votefour
+     @book = Book.find(params[:id])
+     @book.vote_by :voter => current_user, :vote_weight => 4
+     redirect_to books_path
+   end
+
+   def votefive
+     @book = Book.find(params[:id])
+     @book.vote_by :voter => current_user, :vote_weight => 5
+     redirect_to books_path
+   end
+
+   def unvote
+     @book = Book.find(params[:id])
+     @book.unvote_by current_user
+     redirect_to books_path
+   end
 
   # GET /books/1
   # GET /books/1.json
