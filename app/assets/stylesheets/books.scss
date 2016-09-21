@@ -21,3 +21,21 @@
   margin: 0 3px 0 3px;
   display: block;
 }
+
+.book-rating {
+  width: 400px;
+  height: auto;
+  margin: 25px auto 0 auto;
+  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  background-color: rgb(240,240,240)
+
+}
+
+.book-rating-user {
+  padding: 5px;
+  border-bottom-style: solid;
+  border-width: thin;
+  border-color: rgb(200,200,200);
+
+}

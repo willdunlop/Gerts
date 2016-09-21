@@ -1,34 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+<div class="book-user">Posted by: <%= @book.user.email %></div>
+<div class="book-container">
+  <% gbook = GoogleBooks.search(@book.title).first %>
+    <p class="book-title"> <%= @book.title %> </p>
+    <p class="book-info"> Author: <%= gbook.authors %>, </p>
+      <p class="book-info">Publication: <%= gbook.published_date %> </p>
+      <div class="book-cover">
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+      <img src= <%= gbook.image_link(:zoom => 2) %> >
+      </div>
 
-<p>
-  <strong>Publication:</strong>
-  <%= @book.publication %>
-</p>
 
-<p>
-  <strong>Isbn:</strong>
-  <%= @book.isbn %>
-</p>
+    <p class="book-description">  <%= gbook.description %> </p>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @book.summary %>
-</p>
+    </div>
 
-<p>
-  <strong>User:</strong>
-  <%= @book.user %>
-</p>
+    <div class="book-rating">
+    <div class="book-rating-user"> Reviewed By: <b><%= @book.user.email %></b></div>
+    <%= @book.summary %></div>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
