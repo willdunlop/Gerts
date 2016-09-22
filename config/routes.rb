@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resources :books do
     member do
-    put "like", to: "links#upvote"
-    put "dislike", to: "links#downvote"
+
+      put "voteone", to: "books#voteone"
+      put "votetwo", to: "books#votetwo"
+      put "votethree", to: "books#votethree"
+      put "votefour", to: "books#votefour"
+      put "votefive", to: "books#votefive"
+      put "unvote", to: "books#unvote"
   end
 end
 
